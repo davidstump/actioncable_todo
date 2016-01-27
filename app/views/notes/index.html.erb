@@ -1,0 +1,8 @@
+<h1>Notes</h1>
+<ul id="notes">
+  <%= render @notes %>
+</ul>
+<br/><br/>
+
+<%= label_tag :body, "Add Note: " %>
+<%= text_field_tag :body, "", id: "new-note" %>

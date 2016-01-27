@@ -1,0 +1,27 @@
+App.note = App.cable.subscriptions.create "NoteChannel",
+  connected: ->
+    # Called when the subscription is ready for use on the server
+
+  disconnected: ->
+    # Called when the subscription has been terminated by the server
+
+  received: (data) ->
+    switch data.action
+      when "add" then $('#notes').append(data.note)
+      when "remove" then $("[data-id=#{data.id}]").parent(,).remove()
+
+  add: (note) ->
+    @perform 'add', note: note
+
+  remove: (id) ->
+    @perform 'remove', id: id
+
+$(document).on 'keypress', '#new-note', (event) ->
+  if event.keyCode is 13
+    App.note.add(event.target.value)
+    event.target.value = ""
+    event.preventDefault()
+
+$(document).on "click", ".remove-note", (event) ->
+  id = event.target.dataset.id
+  App.note.remove(id)

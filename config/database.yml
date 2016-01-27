@@ -1,0 +1,26 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  host: 127.0.0.1
+  database: todo_development
+  pool: 5
+  username: david
+  password:
+
+test:
+  adapter: postgresql
+  encoding: unicode
+  host: 127.0.0.1
+  database: todo_test
+  pool: 5
+  username: david
+  password:
+
+production:
+  adapter: postgresql
+  encoding: unicode
+  host: 127.0.0.1
+  database: todo_production
+  pool: 5
+  username: david
+  password:
